@@ -2,6 +2,9 @@
 
 This project is a web application developed as part of the ReachInbox.ai assignment. The application includes user authentication, a onebox interface for managing emails, and a custom text editor for composing replies.
 
+live demo: 
+https://reachinbox-seven.vercel.app/
+
 ## Features
 
 - **Login Page**: A user-friendly login interface as per the provided design.
