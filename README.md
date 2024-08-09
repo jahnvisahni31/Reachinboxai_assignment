@@ -1,7 +1,7 @@
 ## Reachinbox
 
 ## Deployed Link :
-https://reachinbox-seven.vercel.app/
+https://reachinboxassignment-jahnvisahni.vercel.app/
 
 ## Tech Stack used:
 * React.js
