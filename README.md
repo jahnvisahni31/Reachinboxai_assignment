@@ -1,42 +1,28 @@
-# ReachInbox Web App
+## Reachinbox
 
-This project is a web application developed as part of the ReachInbox.ai assignment. The application includes user authentication, a onebox interface for managing emails, and a custom text editor for composing replies.
-
-live demo: 
+## Deployed Link :
 https://reachinbox-seven.vercel.app/
 
-## Features
+## Tech Stack used:
+* React.js
+* Redux.js
+* Tailwind.css
 
-- **Login Page**: A user-friendly login interface as per the provided design.
-- **Onebox Screen**: After successful login, users are directed to the Onebox screen where they can manage their emails.
-- **Data Fetching**: The application integrates with APIs to fetch email data and perform operations like viewing, deleting, and replying to emails.
-- **Keyboard Shortcuts**: Implemented keyboard shortcuts for efficient navigation:
-  - **D**: Deletes the selected email thread.
-  - **R**: Opens the reply box for the selected email thread.
-- **Custom Text Editor**: A text editor for composing replies with additional buttons for "SAVE" and "Variables".
-- **Reply Functionality**: Users can reply to emails, sending data via the API.
-- **Light and Dark Mode**: A toggle feature allowing users to switch between light and dark themes.
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js
-- npm or yarn
-
-## API Endpoints
-The application interacts with the following API endpoints:
-
-Login: /google-login
-Fetch Onebox List: /onebox/list
-Fetch Email Thread: GET /onebox/:thread_id
-Delete Email Thread: DELETE /onebox/:thread_id
-Reply to Email: POST /reply/:thread_id
+## features :
+* User can login using google account
+* Switch theme light or dark
+* Add variables in reply
+* CRUD Operation on thread
+* Dynamically display thread data along with sending time and date
 
 
-### Design Reference
-The design files can be accessed at the following link:
+## Project Setup
 
-[Figma Design File](https://www.figma.com/file/uECxqvFhEx9dn4ZuO7wqmu/Reachinbox-Assignment?type=design&node-id=0-1&mode=design)
+* git clone https://github.com/jahnvisahni31/Reachinboxai_assignment.git
+* npm i
+* npm start
 
+## Feedback :
+Any feedback regarding improvement are welcome!
 
+### Thank you !

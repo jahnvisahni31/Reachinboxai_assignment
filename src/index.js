@@ -1,58 +1,34 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const jwt = require('jsonwebtoken');
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Auth0Provider } from "@auth0/auth0-react";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
+import { ThemeProvider } from "./context";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
-const app = express();
-app.use(bodyParser.json());
-app.use(cors());
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <BrowserRouter>
+    <ThemeProvider>
+      <Auth0Provider
+        domain="dev-d5b0px3vsv444qh2.us.auth0.com"
+        clientId="nijzbLWY83xPUcocKKqW2pnLpapStc1s"
+        authorizationParams={{
+          redirect_uri: window.location.origin,
+        }}
+      >
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </Auth0Provider>
+    </ThemeProvider>
+  </BrowserRouter>
+);
 
-const PORT = process.env.PORT || 5000;
-const SECRET_KEY = 'your_secret_key';
-
-// Mock Data
-let oneboxThreads = [
-    { id: 1, subject: 'Thread 1', body: 'This is thread 1' },
-    { id: 2, subject: 'Thread 2', body: 'This is thread 2' }
-];
-
-// Mock User
-const user = { email: 'test@example.com', password: 'password' };
-
-app.post('/login', (req, res) => {
-    const { email, password } = req.body;
-    if (email === user.email && password === user.password) {
-        const token = jwt.sign({ email }, SECRET_KEY, { expiresIn: '1h' });
-        res.json({ token });
-    } else {
-        res.status(401).json({ error: 'Invalid credentials' });
-    }
-});
-
-app.get('/onebox/list', (req, res) => {
-    res.json(oneboxThreads);
-});
-
-app.get('/onebox/:thread_id', (req, res) => {
-    const thread = oneboxThreads.find(t => t.id === parseInt(req.params.thread_id));
-    if (thread) {
-        res.json(thread);
-    } else {
-        res.status(404).json({ error: 'Thread not found' });
-    }
-});
-
-app.delete('/onebox/:thread_id', (req, res) => {
-    oneboxThreads = oneboxThreads.filter(t => t.id !== parseInt(req.params.thread_id));
-    res.json({ success: true });
-});
-
-app.post('/reply/:thread_id', (req, res) => {
-    const { from, to, subject, body } = req.body;
-    // Mock reply sending
-    res.json({ success: true, from, to, subject, body });
-});
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
